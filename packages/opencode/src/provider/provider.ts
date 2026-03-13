@@ -31,6 +31,7 @@ import { createVertexAnthropic } from "@ai-sdk/google-vertex/anthropic"
 import { createOpenAI } from "@ai-sdk/openai"
 import { createOpenAICompatible } from "@ai-sdk/openai-compatible"
 import { createOpenRouter, type LanguageModelV2 } from "@openrouter/ai-sdk-provider"
+import { createVenice } from "venice-ai-sdk-provider" // kilocode_change
 import { createOpenaiCompatible as createGitHubCopilotOpenAICompatible } from "./sdk/copilot"
 import { createKilo } from "@kilocode/kilo-gateway" // kilocode_change
 import { createXai } from "@ai-sdk/xai"
@@ -100,6 +101,7 @@ export namespace Provider {
     "@ai-sdk/openai": createOpenAI,
     "@ai-sdk/openai-compatible": createOpenAICompatible,
     "@openrouter/ai-sdk-provider": createOpenRouter,
+    "venice-ai-sdk-provider": createVenice, // kilocode_change
     "@kilocode/kilo-gateway": createKilo, // kilocode_change
     "@ai-sdk/xai": createXai,
     "@ai-sdk/mistral": createMistral,

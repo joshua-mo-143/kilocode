@@ -33,6 +33,30 @@ test("provider loaded from env variable", async () => {
   })
 })
 
+test("venice provider loaded from env variable", async () => {
+  await using tmp = await tmpdir({
+    init: async (dir) => {
+      await Bun.write(
+        path.join(dir, "opencode.json"),
+        JSON.stringify({
+          $schema: "https://app.kilo.ai/config.json",
+        }),
+      )
+    },
+  })
+  await Instance.provide({
+    directory: tmp.path,
+    init: async () => {
+      Env.set("VENICE_API_KEY", "test-api-key")
+    },
+    fn: async () => {
+      const providers = await Provider.list()
+      expect(providers["venice"]).toBeDefined()
+      expect(providers["venice"].source).toBe("env")
+    },
+  })
+})
+
 test("provider loaded from config with apiKey option", async () => {
   await using tmp = await tmpdir({
     init: async (dir) => {

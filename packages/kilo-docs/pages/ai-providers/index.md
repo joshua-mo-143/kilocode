@@ -38,6 +38,7 @@ Run models on your own hardware for privacy and offline use:
 Route requests through unified APIs with additional features:
 
 - **[OpenRouter](/docs/ai-providers/openrouter)** - Access multiple providers through one API
+- **[Venice AI](/docs/ai-providers/venice)** - Unified access to Venice-hosted model catalog
 - **[Glama](/docs/ai-providers/glama)** - Enterprise AI gateway
 - **[Requesty](/docs/ai-providers/requesty)** - Smart routing and fallbacks
 

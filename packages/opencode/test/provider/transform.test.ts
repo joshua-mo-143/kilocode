@@ -223,6 +223,47 @@ describe("ProviderTransform.options - gateway", () => {
   })
 })
 
+describe("ProviderTransform.options - venice", () => {
+  const sessionID = "test-session-venice"
+  const model = {
+    id: "venice/qwen3-235b-a22b-thinking-2507",
+    providerID: "venice",
+    api: {
+      id: "qwen3-235b-a22b-thinking-2507",
+      url: "https://api.venice.ai/api/v1",
+      npm: "venice-ai-sdk-provider",
+    },
+    name: "Qwen 3 235B A22B Thinking 2507",
+    capabilities: {
+      temperature: true,
+      reasoning: true,
+      attachment: false,
+      toolcall: true,
+      input: { text: true, audio: false, image: false, video: false, pdf: false },
+      output: { text: true, audio: false, image: false, video: false, pdf: false },
+      interleaved: false,
+    },
+    cost: {
+      input: 0.001,
+      output: 0.002,
+      cache: { read: 0.0001, write: 0.0002 },
+    },
+    limit: {
+      context: 200_000,
+      output: 64_000,
+    },
+    status: "active",
+    options: {},
+    headers: {},
+    release_date: "2024-01-01",
+  } as any
+
+  test("sets promptCacheKey by default", () => {
+    const result = ProviderTransform.options({ model, sessionID, providerOptions: {} })
+    expect(result.promptCacheKey).toBe(sessionID)
+  })
+})
+
 describe("ProviderTransform.providerOptions", () => {
   const createModel = (overrides: Partial<any> = {}) =>
     ({
@@ -369,6 +410,22 @@ describe("ProviderTransform.providerOptions", () => {
 
     expect(ProviderTransform.providerOptions(model, { reasoningFormat: "parsed" })).toEqual({
       groq: { reasoningFormat: "parsed" },
+    })
+  })
+
+  test("uses provider id key for venice package options", () => {
+    const model = createModel({
+      id: "venice/qwen3-235b-a22b-thinking-2507",
+      providerID: "venice",
+      api: {
+        id: "qwen3-235b-a22b-thinking-2507",
+        url: "https://api.venice.ai/api/v1",
+        npm: "venice-ai-sdk-provider",
+      },
+    })
+
+    expect(ProviderTransform.providerOptions(model, { veniceParameters: { disableThinking: true } })).toEqual({
+      venice: { veniceParameters: { disableThinking: true } },
     })
   })
 })
@@ -1822,6 +1879,21 @@ describe("ProviderTransform.variants", () => {
     })
   })
 
+  test("venice sdk models return widely-supported reasoning efforts", () => {
+    const model = createMockModel({
+      id: "venice/grok-code-fast-1",
+      providerID: "venice",
+      api: {
+        id: "grok-code-fast-1",
+        url: "https://api.venice.ai/api/v1",
+        npm: "venice-ai-sdk-provider",
+      },
+    })
+    const result = ProviderTransform.variants(model)
+    expect(Object.keys(result)).toEqual(["low", "medium", "high"])
+    expect(result.medium).toEqual({ reasoningEffort: "medium" })
+  })
+
   // kilocode_change start
   describe("@kilocode/kilo-gateway", () => {
     test("claude models return empty variants (reasoning disabled)", () => {
@@ -2666,6 +2738,20 @@ describe("ProviderTransform.variants", () => {
         const result = ProviderTransform.smallOptions(model)
         expect(result).toEqual({ reasoning: { enabled: false } })
       })
+    })
+
+    test("venice models disable thinking for small mode", () => {
+      const model = createMockModel({
+        id: "venice/qwen3-235b-a22b-thinking-2507",
+        providerID: "venice",
+        api: {
+          id: "qwen3-235b-a22b-thinking-2507",
+          url: "https://api.venice.ai/api/v1",
+          npm: "venice-ai-sdk-provider",
+        },
+      })
+      const result = ProviderTransform.smallOptions(model)
+      expect(result).toEqual({ veniceParameters: { disableThinking: true } })
     })
   })
 
