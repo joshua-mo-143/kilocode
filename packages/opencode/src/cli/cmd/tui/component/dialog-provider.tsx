@@ -21,7 +21,8 @@ const PROVIDER_PRIORITY: Record<string, number> = {
   anthropic: 0,
   "github-copilot": 1,
   openai: 2,
-  google: 3,
+  venice: 3, // kilocode_change
+  google: 4,
 }
 
 export function createDialogProviderOptions() {
@@ -39,6 +40,7 @@ export function createDialogProviderOptions() {
           kilo: "(Recommended)", // kilocode_change
           anthropic: "(Claude Max or API key)",
           openai: "(ChatGPT Plus/Pro or API key)",
+          venice: "(API key)", // kilocode_change
           // "opencode-go": "(Low cost)", // kilocode_change
         }[provider.id],
         category: provider.id in PROVIDER_PRIORITY ? "Popular" : "Other",

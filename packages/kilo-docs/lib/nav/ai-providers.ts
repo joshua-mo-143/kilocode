@@ -21,6 +21,7 @@ export const AiProvidersNav: NavSection[] = [
       { href: "/ai-providers/gemini", children: "Google Gemini" },
       { href: "/ai-providers/mistral", children: "Mistral AI" },
       { href: "/ai-providers/deepseek", children: "DeepSeek" },
+      { href: "/ai-providers/venice", children: "Venice AI" },
       { href: "/ai-providers/xai", children: "xAI (Grok)" },
     ],
   },
