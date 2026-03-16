@@ -3,7 +3,7 @@ import type { EnrichedModel } from "../../context/provider"
 
 export const KILO_GATEWAY_ID = "kilo"
 
-export const PROVIDER_ORDER = [KILO_GATEWAY_ID, "anthropic", "openai", "google"]
+export const PROVIDER_ORDER = [KILO_GATEWAY_ID, "anthropic", "openai", "venice", "google"]
 
 export function providerSortKey(providerID: string, order = PROVIDER_ORDER): number {
   const idx = order.indexOf(providerID.toLowerCase())

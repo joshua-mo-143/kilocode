@@ -23,6 +23,7 @@ Major AI companies offering powerful models via API:
 - **[OpenAI](/docs/ai-providers/openai)** - GPT-4, GPT-4o, o1, and more
 - **[Google Gemini](/docs/ai-providers/gemini)** - Gemini Pro, Gemini Ultra
 - **[DeepSeek](/docs/ai-providers/deepseek)** - DeepSeek V3., R1
+- **[Venice AI](/docs/ai-providers/venice)** - Privacy-focused gateway with uncensored and reasoning-capable models
 - **[Mistral](/docs/ai-providers/mistral)** - Mistral Large, Codestral
 
 ### Local & Self-Hosted

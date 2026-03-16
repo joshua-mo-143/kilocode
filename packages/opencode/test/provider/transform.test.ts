@@ -84,6 +84,22 @@ describe("ProviderTransform.options - setCacheKey", () => {
     expect(result.promptCacheKey).toBe(sessionID)
   })
 
+  // kilocode_change start
+  test("should set promptCacheKey for venice provider", () => {
+    const veniceModel = {
+      ...mockModel,
+      providerID: "venice",
+      api: {
+        id: "venice-uncensored",
+        url: "https://api.venice.ai/api/v1",
+        npm: "venice-ai-sdk-provider",
+      },
+    }
+    const result = ProviderTransform.options({ model: veniceModel, sessionID, providerOptions: {} })
+    expect(result.promptCacheKey).toBe(sessionID)
+  })
+  // kilocode_change end
+
   test("should set store=false for openai provider", () => {
     const openaiModel = {
       ...mockModel,
@@ -2279,6 +2295,26 @@ describe("ProviderTransform.variants", () => {
     // kilocode_change end
   })
 
+  // kilocode_change start
+  describe("venice-ai-sdk-provider", () => {
+    test("returns WIDELY_SUPPORTED_EFFORTS with reasoningEffort", () => {
+      const model = createMockModel({
+        id: "venice/openai-gpt-52",
+        providerID: "venice",
+        api: {
+          id: "openai-gpt-52",
+          url: "https://api.venice.ai/api/v1",
+          npm: "venice-ai-sdk-provider",
+        },
+      })
+      const result = ProviderTransform.variants(model)
+      expect(Object.keys(result)).toEqual(["low", "medium", "high"])
+      expect(result.low).toEqual({ reasoningEffort: "low" })
+      expect(result.high).toEqual({ reasoningEffort: "high" })
+    })
+  })
+  // kilocode_change end
+
   describe("@ai-sdk/azure", () => {
     test("o1-mini returns empty object", () => {
       const model = createMockModel({
@@ -2666,6 +2702,20 @@ describe("ProviderTransform.variants", () => {
         const result = ProviderTransform.smallOptions(model)
         expect(result).toEqual({ reasoning: { enabled: false } })
       })
+    })
+
+    test("venice models disable thinking with veniceParameters", () => {
+      const model = createMockModel({
+        id: "venice/openai-gpt-52",
+        providerID: "venice",
+        api: {
+          id: "openai-gpt-52",
+          url: "https://api.venice.ai/api/v1",
+          npm: "venice-ai-sdk-provider",
+        },
+      })
+      const result = ProviderTransform.smallOptions(model)
+      expect(result).toEqual({ veniceParameters: { disableThinking: true } })
     })
   })
 

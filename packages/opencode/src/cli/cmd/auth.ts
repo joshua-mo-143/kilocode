@@ -320,9 +320,10 @@ export const AuthLoginCommand = cmd({
           anthropic: 2,
           "github-copilot": 3,
           openai: 4,
-          google: 5,
-          openrouter: 6,
-          vercel: 7,
+          venice: 5,
+          google: 6,
+          openrouter: 7,
+          vercel: 8,
         }
         // kilocode_change end
 
@@ -352,6 +353,7 @@ export const AuthLoginCommand = cmd({
                   opencode: "recommended",
                   anthropic: "Claude Max or API key",
                   openai: "ChatGPT Plus/Pro or API key",
+                  venice: "API key",
                 }[x.id],
               })),
             ),
