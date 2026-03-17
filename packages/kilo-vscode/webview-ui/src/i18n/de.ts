@@ -451,10 +451,10 @@ export const dict = {
   "notification.permission.title": "Berechtigung erforderlich",
   "notification.permission.description": "{{sessionTitle}} in {{projectName}} benötigt Berechtigung",
   "ui.permission.permissionRules": "Berechtigungsregeln",
-  "ui.permission.pattern.addToAllowed": "Zur Erlaubt-Liste hinzufügen",
-  "ui.permission.pattern.removeFromAllowed": "Aus der Erlaubt-Liste entfernen",
-  "ui.permission.pattern.addToDenied": "Zur Verweigert-Liste hinzufügen",
-  "ui.permission.pattern.removeFromDenied": "Aus der Verweigert-Liste entfernen",
+  "ui.permission.rule.addToAllowed": "Zur Erlaubt-Liste hinzufügen",
+  "ui.permission.rule.removeFromAllowed": "Aus der Erlaubt-Liste entfernen",
+  "ui.permission.rule.addToDenied": "Zur Verweigert-Liste hinzufügen",
+  "ui.permission.rule.removeFromDenied": "Aus der Verweigert-Liste entfernen",
   "notification.question.title": "Frage",
   "notification.question.description": "{{sessionTitle}} in {{projectName}} hat eine Frage",
   "notification.action.goToSession": "Zur Sitzung gehen",
@@ -947,6 +947,9 @@ export const dict = {
   "settings.experimental.pasteSummary.description": "Große eingefügte Inhalte nicht zusammenfassen",
   "settings.experimental.batch.title": "Batch-Werkzeug",
   "settings.experimental.batch.description": "Bündelung mehrerer Werkzeugaufrufe aktivieren",
+  "settings.experimental.codebaseSearch.title": "Codebase-Suche",
+  "settings.experimental.codebaseSearch.description":
+    "KI-gestützte Suche in natürlicher Sprache über die gesamte Codebasis aktivieren",
   "settings.experimental.continueOnDeny.title": "Bei Ablehnung fortfahren",
   "settings.experimental.continueOnDeny.description":
     "Agent-Schleife fortsetzen, wenn eine Berechtigung abgelehnt wird",
@@ -972,8 +975,18 @@ export const dict = {
   "settings.agentBehaviour.discoveredSkills": "Erkannte Skills",
   "settings.agentBehaviour.noSkillsFound":
     "Keine Skills gefunden. Fügen Sie unten Skill-Ordnerpfade oder URLs hinzu, um Skills verfügbar zu machen.",
+  "settings.agentBehaviour.availableModes": "Verfügbare benutzerdefinierte Modi",
+  "settings.agentBehaviour.noModesFound": "Keine Modi gefunden.",
+  "settings.agentBehaviour.removeMode.title": "Modus entfernen",
+  "settings.agentBehaviour.removeMode.confirm":
+    'Modus "{{name}}" entfernen? Dadurch wird der Modus durch Aktualisierung Ihrer Konfiguration deaktiviert.',
+  "settings.agentBehaviour.removeMode.button": "Entfernen",
   "settings.agentBehaviour.skillPaths": "Skill-Ordnerpfade",
   "settings.agentBehaviour.skillUrls": "Skill-URLs",
+  "settings.agentBehaviour.removeSkill.title": "Skill entfernen",
+  "settings.agentBehaviour.removeSkill.confirm":
+    'Skill "{{name}}" entfernen? Dadurch werden die Skill-Dateien vom Datenträger gelöscht.',
+  "settings.agentBehaviour.removeSkill.button": "Entfernen",
   "settings.agentBehaviour.instructionFiles": "Zusätzliche Anweisungsdateien",
   "settings.agentBehaviour.instructionFiles.description": "Pfade zu zusätzlichen Anweisungsdateien im System-Prompt",
   "settings.agentBehaviour.mcpEmpty":

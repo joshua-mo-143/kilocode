@@ -451,10 +451,10 @@ export const dict = {
   "notification.permission.title": "Permission requise",
   "notification.permission.description": "{{sessionTitle}} dans {{projectName}} a besoin d'une permission",
   "ui.permission.permissionRules": "Règles de permission",
-  "ui.permission.pattern.addToAllowed": "Ajouter à la liste des autorisés",
-  "ui.permission.pattern.removeFromAllowed": "Retirer de la liste des autorisés",
-  "ui.permission.pattern.addToDenied": "Ajouter à la liste des refusés",
-  "ui.permission.pattern.removeFromDenied": "Retirer de la liste des refusés",
+  "ui.permission.rule.addToAllowed": "Ajouter à la liste des autorisés",
+  "ui.permission.rule.removeFromAllowed": "Retirer de la liste des autorisés",
+  "ui.permission.rule.addToDenied": "Ajouter à la liste des refusés",
+  "ui.permission.rule.removeFromDenied": "Retirer de la liste des refusés",
   "notification.question.title": "Question",
   "notification.question.description": "{{sessionTitle}} dans {{projectName}} a une question",
   "notification.action.goToSession": "Aller à la session",
@@ -949,6 +949,9 @@ export const dict = {
   "settings.experimental.pasteSummary.description": "Ne pas résumer le contenu collé volumineux",
   "settings.experimental.batch.title": "Outil par lot",
   "settings.experimental.batch.description": "Activer le traitement par lot d'appels d'outils",
+  "settings.experimental.codebaseSearch.title": "Recherche de code",
+  "settings.experimental.codebaseSearch.description":
+    "Activer la recherche en langage naturel par IA dans toute la base de code",
   "settings.experimental.continueOnDeny.title": "Continuer en cas de refus",
   "settings.experimental.continueOnDeny.description":
     "Continuer la boucle de l'agent lorsqu'une autorisation est refusée",
@@ -974,8 +977,18 @@ export const dict = {
   "settings.agentBehaviour.discoveredSkills": "Compétences découvertes",
   "settings.agentBehaviour.noSkillsFound":
     "Aucune compétence découverte. Ajoutez des chemins de dossiers ou des URLs ci-dessous pour rendre les compétences disponibles.",
+  "settings.agentBehaviour.availableModes": "Modes personnalisés disponibles",
+  "settings.agentBehaviour.noModesFound": "Aucun mode trouvé.",
+  "settings.agentBehaviour.removeMode.title": "Supprimer le mode",
+  "settings.agentBehaviour.removeMode.confirm":
+    'Supprimer le mode "{{name}}" ? Cela désactivera le mode en mettant à jour votre configuration.',
+  "settings.agentBehaviour.removeMode.button": "Supprimer",
   "settings.agentBehaviour.skillPaths": "Chemins des dossiers de compétences",
   "settings.agentBehaviour.skillUrls": "URLs de compétences",
+  "settings.agentBehaviour.removeSkill.title": "Supprimer la compétence",
+  "settings.agentBehaviour.removeSkill.confirm":
+    'Supprimer la compétence "{{name}}" ? Cela supprimera les fichiers de la compétence du disque.',
+  "settings.agentBehaviour.removeSkill.button": "Supprimer",
   "settings.agentBehaviour.instructionFiles": "Fichiers d'instructions supplémentaires",
   "settings.agentBehaviour.instructionFiles.description": "Chemins vers des fichiers d'instructions supplémentaires",
   "settings.agentBehaviour.mcpEmpty":
