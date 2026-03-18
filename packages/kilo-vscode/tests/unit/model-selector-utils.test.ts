@@ -1,7 +1,6 @@
 import { describe, it, expect } from "bun:test"
 import {
   providerSortKey,
-  isFree,
   buildTriggerLabel,
   stripSubProviderPrefix,
   KILO_GATEWAY_ID,
@@ -42,20 +41,6 @@ describe("providerSortKey", () => {
     const ids = ["google", "anthropic", "kilo", "openai", "venice"]
     const sorted = ids.slice().sort((a, b) => providerSortKey(a) - providerSortKey(b))
     expect(sorted).toEqual(["kilo", "anthropic", "openai", "venice", "google"])
-  })
-})
-
-describe("isFree", () => {
-  it("returns true when inputPrice is 0", () => {
-    expect(isFree({ inputPrice: 0 })).toBe(true)
-  })
-
-  it("returns false when inputPrice is positive", () => {
-    expect(isFree({ inputPrice: 0.001 })).toBe(false)
-  })
-
-  it("returns false when inputPrice is non-zero", () => {
-    expect(isFree({ inputPrice: 5 })).toBe(false)
   })
 })
 
